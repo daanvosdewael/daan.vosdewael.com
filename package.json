@@ -1,0 +1,35 @@
+{
+  "name": "daanvosdewael",
+  "version": "1.0.0",
+  "description": "Static website for Daan.VosdeWael.com hosted on Netlify",
+  "repository": "https://github.com/daanvosdewael/daan.vosdewael.com",
+  "author": "Daan Vos de Wael <daan@vosdewael.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development webpack-dev-server",
+    "build": "NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.3.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-exclude-assets-plugin": "^0.0.5",
+    "html-webpack-inline-source-plugin": "^0.0.9",
+    "html-webpack-plugin": "^2.30.1",
+    "postcss": "^6.0.14",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.9",
+    "postcss-mixins": "^6.2.0",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-order": "^0.8.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}

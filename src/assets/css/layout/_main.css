@@ -1,0 +1,44 @@
+main {
+  font-style: italic;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h1 {
+  color: #4560e6;
+  font-size: 5em;
+  font-weight: 300;
+  line-height: .85;
+  margin: 0;
+}
+
+span {
+  display: block;
+}
+
+p {
+  color: #222;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 2;
+  margin: 0;
+}
+
+a {
+  background-color: transparent;
+  color: #222;
+  position: relative;
+  text-decoration: none;
+  touch-action: manipulation;
+
+  &::after {
+    background: linear-gradient(to left, #4560e6 0%, #e03c31 100%);
+    bottom: -1px;
+    content: '';
+    height: .1em;
+    left: 0;
+    position: absolute;
+    transition: height 200ms;
+    width: 100%;
+  }
+}

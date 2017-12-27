@@ -1,0 +1,14 @@
+body {
+  align-items: center;
+  background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui;
+  font-size: calc(112.5% + .25vw);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  justify-content: center;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+}
