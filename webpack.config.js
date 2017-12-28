@@ -35,6 +35,7 @@ module.exports = {
 
     new CopyWebpackPlugin([
       { from: 'src/google*.html', to: '[name].[ext]' },
+      { from: 'src/_redirects', to: '[name].[ext]' },
     ]),
   ],
 
