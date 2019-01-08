@@ -7,8 +7,8 @@ main {
 h1 {
   color: #4560e6;
   font-size: 5em;
-  font-weight: 300;
-  line-height: .85;
+  font-weight: 400;
+  line-height: 0.85;
   margin: 0;
 }
 
@@ -18,8 +18,8 @@ span {
 
 p {
   color: #222;
-  font-size: 1.2em;
-  font-weight: 300;
+  font-size: 1.33rem;
+  font-weight: 400;
   line-height: 2;
   margin: 0;
 }
@@ -27,15 +27,19 @@ p {
 a {
   background-color: transparent;
   color: #222;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: 1em;
   position: relative;
   text-decoration: none;
   touch-action: manipulation;
 
   &::after {
     background: linear-gradient(to left, #4560e6 0%, #e03c31 100%);
-    bottom: -1px;
+    bottom: -8px;
     content: '';
-    height: .1em;
+    height: 0.15em;
     left: 0;
     position: absolute;
     transition: height 200ms;

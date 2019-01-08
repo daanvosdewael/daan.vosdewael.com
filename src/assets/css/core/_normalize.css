@@ -7,8 +7,8 @@
 
 html {
   box-sizing: border-box;
-  text-size-adjust: 100%;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  text-size-adjust: 100%;
 }
 
 body {
