@@ -1,7 +1,7 @@
 {
   "name": "daanvosdewael",
   "version": "1.0.0",
-  "description": "Static website for Daan.VosdeWael.com hosted on Netlify",
+  "description": "Static website for daan.vosdewael.com hosted on Netlify",
   "repository": "https://github.com/daanvosdewael/daan.vosdewael.com",
   "author": "Daan Vos de Wael <daan@vosdewael.com>",
   "license": "MIT",
@@ -11,25 +11,63 @@
     "build": "NODE_ENV=production webpack --progress --hide-modules"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^0.1.17",
-    "copy-webpack-plugin": "^4.3.1",
-    "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "html-webpack-exclude-assets-plugin": "^0.0.5",
-    "html-webpack-inline-source-plugin": "^0.0.9",
-    "html-webpack-plugin": "^2.30.1",
-    "postcss": "^6.0.14",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-import": "^11.0.0",
-    "postcss-loader": "^2.0.9",
-    "postcss-mixins": "^6.2.0",
-    "stylelint": "^8.4.0",
-    "stylelint-config-standard": "^18.0.0",
-    "stylelint-order": "^0.8.0",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "clean-webpack-plugin": "^1.0.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.1.0",
+    "html-webpack-exclude-assets-plugin": "^0.0.7",
+    "html-webpack-inline-source-plugin": "^0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss": "^7.0.7",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.1",
+    "postcss-preset-env": "^6.5.0",
+    "stylelint": "^9.9.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^2.0.0",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "plugins": [
+      "stylelint-order"
+    ],
+    "rules": {
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "define-mixin",
+            "mixin"
+          ]
+        }
+      ],
+      "at-rule-no-vendor-prefix": true,
+      "color-named": "never",
+      "declaration-block-no-redundant-longhand-properties": true,
+      "declaration-no-important": true,
+      "font-family-name-quotes": "always-where-recommended",
+      "font-weight-notation": "numeric",
+      "function-url-quotes": "always",
+      "indentation": 2,
+      "media-feature-name-no-vendor-prefix": true,
+      "order/properties-alphabetical-order": true,
+      "property-no-unknown": true,
+      "property-no-vendor-prefix": true,
+      "selector-attribute-quotes": "always",
+      "selector-nested-pattern": "^&",
+      "selector-no-vendor-prefix": true,
+      "shorthand-property-no-redundant-values": true,
+      "string-quotes": "single",
+      "value-no-vendor-prefix": true
+    }
   },
   "browserslist": [
-    "last 2 versions"
+    "last 2 versions",
+    "not dead"
   ]
 }

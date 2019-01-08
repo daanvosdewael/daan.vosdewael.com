@@ -1,13 +1,20 @@
 const path = require('path');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
-const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-module.exports = {
+const env = process.env.NODE_ENV;
+const minify = env === 'production';
+const sourceMap = env === 'development';
+
+const config = {
+  mode: env,
+
   entry: './src/assets/js/app.js',
 
   output: {
@@ -19,11 +26,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['./public/']),
 
-    new ExtractTextPlugin('assets/styles.[contenthash:7].css'),
+    new MiniCssExtractPlugin({ filename: 'assets/styles.[hash:7].css' }),
 
     new HtmlWebpackPlugin({
       inlineSource: '.css$',
-      minify: (process.env.NODE_ENV === 'production') ? { collapseWhitespace: true } : false,
+      minify: (minify) ? { collapseWhitespace: true } : false,
       template: 'src/index.html',
       favicon: 'src/favicon.ico',
       excludeAssets: [/main.*.js/],
@@ -48,26 +55,49 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /(node_modules)/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1,
-                sourceMap: process.env.NODE_ENV !== 'production',
-                minimize: process.env.NODE_ENV === 'production',
-                url: false,
-              },
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              sourceMap,
+              url: false,
             },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: process.env.NODE_ENV !== 'production',
-              },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap,
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-import')(),
+                require('postcss-mixins')(),
+                require('postcss-preset-env')({
+                  stage: 2,
+                  features: {
+                    'custom-properties': {
+                      'preserve': false,
+                    },
+                    'nesting-rules': true,
+                    'custom-selectors': true,
+                  },
+                }),
+              ],
             },
-          ],
-        }),
-      }
+          },
+        ],
+      },
     ],
   },
+};
+
+if (minify) {
+  config.optimization = {
+    minimizer: [
+      new OptimizeCSSAssetsPlugin(),
+    ],
+  };
 }
+
+module.exports = config;
