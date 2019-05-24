@@ -1,0 +1,4 @@
+/* https://daan.vosdewael.dev
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://daanvosdewaelcom.netlify.com/* https://daan.vosdewael.com/:splat 301!
